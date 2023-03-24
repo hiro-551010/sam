@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../../../private/var/folders/38/4w71k3610rgg1s4j9m3srgwh0000gn/T/tmpqg82rcqw/app.ts"],
+  "sourcesContent": ["import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';\n\nexports.handler = async (\n    event: APIGatewayProxyEvent,\n  ): Promise<APIGatewayProxyResult> => {\n    console.log(event);\n    console.log(event.queryStringParameters);\n\n    if (event.queryStringParameters !== null) {\n      console.log(event.queryStringParameters.challenge);\n      const challenge = event.queryStringParameters.challenge;\n      let response: APIGatewayProxyResult = {\n          statusCode: 404,\n          body: \"missingEndpoint\"\n        };\n      if (challenge) {\n        response = {\n          statusCode: 200,\n          body: challenge\n        }\n      }\n      return response\n    }\n    return {\n      statusCode: 400,\n      body: \"Bad Request\"\n    };\n  }"],
+  "mappings": "aAEA,QAAQ,QAAU,MACdA,GACmC,CAInC,GAHA,QAAQ,IAAIA,CAAK,EACjB,QAAQ,IAAIA,EAAM,qBAAqB,EAEnCA,EAAM,wBAA0B,KAAM,CACxC,QAAQ,IAAIA,EAAM,sBAAsB,SAAS,EACjD,IAAMC,EAAYD,EAAM,sBAAsB,UAC1CE,EAAkC,CAClC,WAAY,IACZ,KAAM,iBACR,EACF,OAAID,IACFC,EAAW,CACT,WAAY,IACZ,KAAMD,CACR,GAEKC,EAET,MAAO,CACL,WAAY,IACZ,KAAM,aACR,CACF",
+  "names": ["event", "challenge", "response"]
+}

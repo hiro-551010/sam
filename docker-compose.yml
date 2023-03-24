@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  lambda:
+    container_name: lambda
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./lambda/:/app
+    privileged: true
+    tty: true
+    platform: linux/x86_64
