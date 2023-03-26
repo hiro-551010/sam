@@ -1,0 +1,8 @@
+START RequestId: 346d0362-8ef7-40eb-b529-e62f78352ab4 Version: $LATEST
+2023-03-25T05:31:24.537Z	346d0362-8ef7-40eb-b529-e62f78352ab4	INFO	{ body: { challenge: 'challenge' } }
+2023-03-25T05:31:24.537Z	346d0362-8ef7-40eb-b529-e62f78352ab4	INFO	{ challenge: 'challenge' }
+2023-03-25T05:31:24.538Z	346d0362-8ef7-40eb-b529-e62f78352ab4	INFO	undefined
+2023-03-25T05:31:24.540Z	346d0362-8ef7-40eb-b529-e62f78352ab4	ERROR	Invoke Error 	{"errorType":"TypeError","errorMessage":"Cannot read properties of undefined (reading 'challenge')","stack":["TypeError: Cannot read properties of undefined (reading 'challenge')","    at Runtime.exports.handler (/private/var/folders/38/4w71k3610rgg1s4j9m3srgwh0000gn/T/tmptarzahdt/app.ts:11:53)","    at Runtime.handleOnceNonStreaming (file:///var/runtime/index.mjs:1086:29)"]}
+END RequestId: 346d0362-8ef7-40eb-b529-e62f78352ab4
+REPORT RequestId: 346d0362-8ef7-40eb-b529-e62f78352ab4	Init Duration: 0.37 ms	Duration: 455.51 ms	Billed Duration: 456 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+{"errorType":"TypeError","errorMessage":"Cannot read properties of undefined (reading 'challenge')","trace":["TypeError: Cannot read properties of undefined (reading 'challenge')","    at Runtime.exports.handler (/private/var/folders/38/4w71k3610rgg1s4j9m3srgwh0000gn/T/tmptarzahdt/app.ts:11:53)","    at Runtime.handleOnceNonStreaming (file:///var/runtime/index.mjs:1086:29)"]}

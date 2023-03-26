@@ -9,7 +9,7 @@ Resources:
     Properties:
       FunctionName: challenge
       CodeUri: challenge/
-      Handler: app.handler
+      Handler: index.handler
       Runtime: nodejs16.x
       Role: arn:aws:iam::907081723216:role/SamDeployRole
       Architectures:
@@ -17,28 +17,36 @@ Resources:
       Environment:
         Variables:
           TZ: Asia/Tokyo
+      Events:
+        ChallengeApi:
+          Type: Api
+          Properties:
+            Path: /challenge
+            Method: post
+            RestApiId: !Ref SlackTodoApi
     Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true
         Target: "es2020"
         Sourcemap: true
+        # Format: "esm"
+        OutExtensions:
+          - .js=.mjs
         EntryPoints:
-          - app.ts
+          - index.mts
 
   SlackTodoApi:
     Type: AWS::Serverless::Api
     Properties:
-      StageName: Prod
-      DefinitionBody:
-        swagger: '2.0'
-        info:
-          title: My API
-          version: '1.0'
-        paths:
-          /slack-todo-api:
-            post:
-              x-amazon-apigateway-integration:
-                type: aws_proxy
-                uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/*/functions/${Challenge.Arn}/invocations
-                httpMethod: "POST"
+      Name: slack-todo-api
+      EndpointConfiguration:
+        Type: REGIONAL
+      StageName: prod
+
+  # SlackTodoLogs:
+  #   Type: 'AWS::Logs::LogGroup'
+  #   Properties:
+  #     LogGroupName: !Sub '/aws/lambda/${Challenge}'
+  #     RetentionInDays: 1
+
